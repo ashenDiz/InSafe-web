@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In-plant Safety System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@11.0.8/dist/framer-motion.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        :root {
+            /* Light theme variables */
+            --primary-bg: #ffffff;
+            --secondary-bg: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --border-color: rgba(59, 130, 246, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --primary-blue: #3b82f6;
+            --blue-dark: #2563eb;
+            --cyan: #06b6d4;
+            --cyan-dark: #0891b2;
+        }
+        
+        [data-theme="dark"] {
+            /* Dark theme variables */
+            --primary-bg: #1f2937;
+            --secondary-bg: #374151;
+            --card-bg: rgba(55, 65, 81, 0.95);
+            --text-primary: #f3f4f6;
+            --text-secondary: #d1d5db;
+            --border-color: rgba(59, 130, 246, 0.3);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --primary-blue: #60a5fa;
+            --blue-dark: #3b82f6;
+            --cyan: #22d3ee;
+            --cyan-dark: #06b6d4;
+        }
+        
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--cyan));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+        
+        .glassmorphism {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px var(--shadow-color);
+            transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glassmorphism-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 24px var(--shadow-color);
+            transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-blue), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-blue), var(--cyan));
+        }
+        
+        .hero-bg {
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, var(--secondary-bg) 70%);
+            transition: background 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px var(--shadow-color);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+        
+        .neon-glow:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        .floating-animation {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .floating-animation-robot {
+            animation: float 5s ease-in-out infinite;
+            margin-top: 20px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+        }
+        
+        .border-gradient {
+            border: 2px solid transparent;
+            background: linear-gradient(var(--primary-bg), var(--primary-bg)) padding-box,
+                        linear-gradient(135deg, var(--primary-blue), var(--cyan)) border-box;
+            transition: background 0.3s ease;
+        }
+        
+        .tech-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Floating Background Orbs */
+        .floating-orb-1, .floating-orb-2, .floating-orb-3 {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(30px);
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .floating-orb-1 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+            top: 15%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+
+        .floating-orb-2 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(45deg, rgba(6, 182, 212, 0.15), rgba(59, 130, 246, 0.15));
+            top: 65%;
+            right: -3%;
+            animation-delay: 2s;
+        }
+
+        .floating-orb-3 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            bottom: 15%;
+            left: 75%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-15px) translateX(8px); }
+            66% { transform: translateY(8px) translateX(-5px); }
+        }
+
+        /* Pulse animation for icons */
+        .icon-container {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 4px rgba(59, 130, 246, 0.2);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+                transform: scale(1.03);
+            }
+        }
+
+        /* Method icon rotation */
+        .method-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .method-icon:hover {
+            transform: rotate(360deg);
+        }
+
+        /* Check icon bounce */
+        .check-icon {
+            animation: bounce-in 0.6s ease;
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Objective numbers pulse */
+        .objective-number {
+            animation: number-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes number-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        [data-theme="dark"] .text-gray-600 {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .text-gray-900 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .bg-white {
+            background-color: var(--primary-bg);
+        }
+
+        [data-theme="dark"] .bg-gray-100 {
+            background-color: var(--secondary-bg);
+        }
+
+        [data-theme="dark"] .bg-gray-50 {
+            background-color: var(--secondary-bg);
+        }
+
+        [data-theme="dark"] .border-gray-200 {
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .text-blue-500 {
+            color: var(--primary-blue);
+        }
+
+        [data-theme="dark"] .text-cyan-500 {
+            color: var(--cyan);
+        }
+
+        [data-theme="dark"] .bg-blue-100 {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        [data-theme="dark"] .bg-cyan-100 {
+            background-color: rgba(6, 182, 212, 0.1);
+        }
+
+        [data-theme="dark"] .border-blue-200 {
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        [data-theme="dark"] .border-cyan-200 {
+            border-color: rgba(6, 182, 212, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glassmorphism transform translate-y-0 transition-transform duration-300 ease-in-out">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold gradient-text mono">InSafe</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Home</a>
+                        <div class="relative group">
+                            <a href="#scope" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Project Scope</a>
+                            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white border border-blue-200 ring-1 ring-gray-100 ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                <div class="py-1">
+                                    <a href="#literature" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600">Literature Survey</a>
+                                    <a href="#gap" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600">Research Gap</a>
+                                    <a href="#problem" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600">Problem & Solution</a>
+                                    <a href="#objectives" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600">Objectives</a>
+                                    <a href="#methodology" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600">Methodology</a>
+                                    <a href="#technologies" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600">Technologies</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#milestones" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Milestones</a>
+                        <a href="#downloads" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Downloads</a>
+                        <a href="#team" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Our Team</a>
+                        <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contact</a>
+                        <!-- Theme Toggle Button -->
+                        <button id="theme-toggle" class="theme-toggle text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="theme-toggle text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i id="theme-icon-mobile" class="fas fa-moon text-xl"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-blue-200 shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md">Home</a>
+                <a href="#scope" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md">Project Scope</a>
+                <a href="#milestones" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md">Milestones</a>
+                <a href="#downloads" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md">Downloads</a>
+                <a href="#team" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md">Our Team</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden cyber-grid">
+        <!-- Alert Icons Floating Around -->
+        <!-- Alert & Safety Icons Floating Around -->
+<i class="fa-solid fa-triangle-exclamation text-yellow-400 text-3xl absolute top-10 left-10 animate-pulse"></i>
+<i class="fa-solid fa-fire-extinguisher text-red-500 text-4xl absolute bottom-20 right-10 animate-bounce"></i>
+<i class="fa-solid fa-helmet-safety text-yellow-400 text-4xl absolute top-1/2 left-24 floating-animation-robot"></i>
+<i class="fa-solid fa-person-running text-green-400 text-3xl absolute bottom-10 left-1/3 animate-ping"></i>
+<i class="fa-solid fa-fire-flame-curved text-red-500 text-4xl absolute top-20 right-1/4 animate-bounce"></i>
+<i class="fa-solid fa-bolt text-orange-400 text-3xl absolute top-28 right-10 animate-pulse"></i>
+<i class="fa-solid fa-fan text-blue-400 text-3xl absolute bottom-16 left-10 animate-spin"></i>
+
+
+        <div class="absolute inset-0 tech-pattern opacity-20"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div id="hero-icon" class="floating-animation-robot">
+                <i class="fa-solid fa-triangle-exclamation text-5xl text-yellow-400 mb-4 mt-5 opacity-90 glow-text"></i>
+            </div>
+            <div id="hero-title">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight glow-text">
+                    In-plant Safety Emergency
+                    <br>
+                    <span class="gradient-text">Warning System</span>
+                </h1>
+            </div>
+            <div id="hero-description">
+                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+                    Our research introduces an advanced In-Plant Safety Emergency Warning System that uses IoT, RFID, image processing, and machine learning to detect emergencies in real time, pinpoint exact locations, and coordinate rapid, informed responses. This system not only speeds up rescue efforts but also helps prevent future incidents through predictive analysis—ensuring a safer, smarter workplace.
+                </p>
+            </div>
+            <div id="hero-buttons" class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToSection('scope')" class="glassmorphism-card text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-100 hover:border-blue-300 transition duration-300 transform hover:scale-105 neon-glow">
+                    <i class="fas fa-eye mr-2"></i>Explore Research
+                </button>
+                <button onclick="scrollToSection('downloads')" class="gradient-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition duration-300 transform hover:scale-105 neon-glow">
+                    <i class="fas fa-download mr-2"></i>Download Report
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Project Scope Section -->
+    <section id="scope" class="py-20 bg-gray-100 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="floating-orb-1"></div>
+            <div class="floating-orb-2"></div>
+            <div class="floating-orb-3"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div id="scope-header" class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4 glow-text scope-title">Project Scope</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto scope-subtitle">
+                    This project develops a smart emergency warning system using IoT, RFID, and machine learning to detect hazards and motor risk level, locate emergencies accurately, and improve safety in industrial environments.
+                </p>
+            </div>
+
+            <!-- Literature Survey -->
+            <div id="literature" class="mb-20 literature-card">
+                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
+                    <div class="flex items-center mb-6 literature-header">
+                        <div class="w-12 h-12 bg-blue-100 border border-blue-200 rounded-full flex items-center justify-center mr-4 icon-container">
+                            <i class="fas fa-book text-blue-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Literature Survey</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 literature-text">
+                        The integration of intelligent technologies in industrial safety systems has significantly transformed how emergencies are detected, managed, and prevented. Traditional alarm systems often rely on manual triggers or simple threshold-based alerts, which lack precision and adaptability in dynamic industrial environments.
+                    </p>
+                    <ul class="space-y-2 text-gray-600 literature-list">
+                        <li class="flex items-start list-item-1">
+                            <i class="fas fa-check-circle text-cyan-500 mt-1 mr-3 check-icon"></i>
+                            Evolution from basic sensor alarms to intelligent IoT-based emergency systems
+                        </li>
+                        <li class="flex items-start list-item-2">
+                            <i class="fas fa-check-circle text-cyan-500 mt-1 mr-3 check-icon"></i>
+                            Adoption of machine learning for predictive maintenance and hazard forecasting
+                        </li>
+                        <li class="flex items-start list-item-3">
+                            <i class="fas fa-check-circle text-cyan-500 mt-1 mr-3 check-icon"></i>
+                            Risk classification models enhancing predictive insights for motor failures
+                        </li>
+                        <li class="flex items-start list-item-3">
+                            <i class="fas fa-check-circle text-cyan-500 mt-1 mr-3 check-icon"></i>
+                            Image processing enabling automated fire detection and visual hazard analysis
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Research Gap -->
+            <div id="gap" class="mb-20 gap-card">
+                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
+                    <div class="flex items-center mb-6 gap-header">
+                        <div class="w-12 h-12 bg-red-100 border border-red-200 rounded-full flex items-center justify-center mr-4 icon-container">
+                            <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Research Gap</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 gap-text">
+                        Many existing industrial safety systems are reactive, providing only basic alerts without precise location data, intelligent risk assessment, or coordination support. They often fail to authenticate responders or predict potential hazards such as motor failures, leading to delayed responses and operational downtime. There is a significant gap in integrated systems that combine real-time detection, location accuracy, and predictive intelligence to improve both emergency response and hazard prevention.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 gap-grid">
+                        <div class="bg-white border border-blue-100 p-4 rounded-lg shadow-sm gap-card-left">
+                            <h4 class="font-semibold text-gray-900 mb-2">Current Limitations</h4>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li class="limitation-item-1">• Lack of precise location tracking during emergencies</li>
+                                <li class="limitation-item-3">• nability to predict motor failures or future hazards</li>
+                                <li class="limitation-item-3">• Delayed and uncoordinated emergency responses</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-cyan-100 p-4 rounded-lg shadow-sm gap-card-right">
+                            <h4 class="font-semibold text-gray-900 mb-2">Our Solution</h4>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li class="solution-item-1">• Real-time alert system with accurate location identification</li>
+                                <li class="solution-item-2">• Machine learning models to classify motor risk levels</li>
+                                <li class="solution-item-3">• Image processing for automated fire detection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Problem & Solution -->
+            <div id="problem" class="mb-20 problem-card">
+                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
+                    <div class="flex items-center mb-6 problem-header">
+                        <div class="w-12 h-12 bg-cyan-100 border border-cyan-200 rounded-full flex items-center justify-center mr-4 icon-container">
+                            <i class="fas fa-lightbulb text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Research Problem & Solution</h3>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 problem-grid">
+                        <div class="problem-left">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Problem Statement</h4>
+                            <p class="text-gray-600 mb-4">
+                                Current in-plant alarm systems are limited in functionality—they indicate the presence of danger but often lack accurate location data, leading to confusion and delays. Emergency responses are not streamlined, and all responders are alerted simultaneously without role-based coordination. Additionally, fires that surpass the internal team's capabilities remain unmanaged, and there is no built-in intelligence to assess motor risk levels, which leads to unexpected machinery failures.
+                            </p>
+                        </div>
+                        <div class="problem-right">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Proposed Solution</h4>
+                            <p class="text-gray-600 mb-4">
+                                The proposed system integrates IoT sensors, RFID authentication, image processing, and machine learning to build a comprehensive emergency management platform. It provides real-time alerts with accurate location data, enables simplified emergency activation with a single button press, authenticates responders to coordinate deployment, triggers external fire services when needed, and uses predictive models to assess and report motor risk levels.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Objectives -->
+            <div id="objectives" class="mb-20 objectives-card">
+                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
+                    <div class="flex items-center mb-6 objectives-header">
+                        <div class="w-12 h-12 bg-blue-100 border border-blue-200 rounded-full flex items-center justify-center mr-4 icon-container">
+                            <i class="fas fa-target text-blue-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Research Objectives</h3>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 objectives-grid">
+                        <div class="space-y-3 objectives-left">
+                            <div class="flex items-start objective-item-1">
+                                <span class="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 objective-number">1</span>
+                                <p class="text-gray-600">Design and implement a smart emergency warning system using IoT, RFID, and image processing technologies</p>
+                            </div>
+                            <div class="flex items-start objective-item-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 objective-number">2</span>
+                                <p class="text-gray-600">Provide accurate real-time location data to improve emergency response efficiency</p>
+                            </div>
+                            <div class="flex items-start objective-item-2">
+                                <span class="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 objective-number">2</span>
+                                <p class="text-gray-600">Enable automated fire detection and severity analysis through image processing</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3 objectives-right">
+                            <div class="flex items-start objective-item-3">
+                                <span class="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 objective-number">3</span>
+                                <p class="text-gray-600">Authenticate responders and log actions using RFID for coordinated and secure response</p>
+                            </div>
+                            <div class="flex items-start objective-item-4">
+                                <span class="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 objective-number">4</span>
+                                <p class="text-gray-600">Detect and classify industrial motor risk levels using machine learning models</p>
+                            </div>
+                            <div class="flex items-start objective-item-4">
+                                <span class="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 objective-number">4</span>
+                                <p class="text-gray-600">Evaluate system performance based on speed, accuracy, usability, and predictive reliability</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Methodology -->
+            <div id="methodology" class="mb-20 methodology-card">
+                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
+                    <div class="flex items-center mb-6 methodology-header">
+                        <div class="w-12 h-12 bg-cyan-100 border border-cyan-200 rounded-full flex items-center justify-center mr-4 icon-container">
+                            <i class="fas fa-cogs text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Methodology</h3>
+                    </div>
+                    <div id="methodology-cards" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 methodology-grid">
+                    <!-- Motor Risk Classification -->
+                    <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover method-card-1">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
+                            <i class="fa-solid fa-gauge-high text-white text-xl"></i> <!-- Motor stress/load icon -->
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Motor Risk Classification</h4>
+                        <p class="text-sm text-gray-500">Classify industrial motor risk levels using machine learning models</p>
+                    </div>
+
+                    <!-- Fire Intensity Analysis -->
+                    <div class="bg-white border border-cyan-100 p-6 rounded-lg shadow-sm card-hover method-card-2">
+                        <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
+                            <i class="fa-solid fa-fire-flame-curved text-white text-xl"></i> <!-- Fire hazard icon -->
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Fire Intensity Analysis</h4>
+                        <p class="text-sm text-gray-500">Image processing techniques to detect and assess fire severity</p>
+                    </div>
+
+                    <!-- Responder Authentication -->
+                    <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover method-card-3">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
+                            <i class="fa-solid fa-id-card-clip text-white text-xl"></i> <!-- RFID responder badge -->
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Responder Authentication</h4>
+                        <p class="text-sm text-gray-500">RFID technology to verify and log authorized personnel</p>
+                    </div>
+
+                    <!-- Emergency Detection -->
+                    <div class="bg-white border border-cyan-100 p-6 rounded-lg shadow-sm card-hover method-card-4">
+                        <div class="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
+                            <i class="fa-solid fa-radiation text-white text-xl"></i> <!-- Hazard detection icon -->
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Emergency Detection</h4>
+                        <p class="text-sm text-gray-500">IoT sensors and image processing for real-time hazard identification</p>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+            <!-- Technologies Used -->
+            <div id="technologies" class="mb-20 tech-card">
+                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
+                    <div class="flex items-center mb-6 tech-header">
+                        <div class="w-12 h-12 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center mr-4 icon-container">
+                            <i class="fas fa-microchip text-gray-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Technologies Used</h3>
+                    </div>
+                    <div id="tech-cards" class="grid md:grid-cols-3 gap-6 tech-grid">
+                        <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover tech-card-1">
+                            <h4 class="font-semibold text-gray-900 mb-3">AI Models</h4>
+                            <ul class="space-y-2 text-sm text-gray-500">
+                                <li class="mono tech-item-1">• DeepSeek, Phi-3, CodeBERT</li>
+                                <li class="mono tech-item-2">• Meta-Llama-3.1-8B-Instruct</li>
+                                <li class="mono tech-item-3">• Gemma LLM</li>
+                                <li class="mono tech-item-4">• Mathewhe/DCLM-7B-Chat</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-cyan-100 p-6 rounded-lg shadow-sm card-hover tech-card-2">
+                            <h4 class="font-semibold text-gray-900 mb-3">Frameworks</h4>
+                            <ul class="space-y-2 text-sm text-gray-500">
+                                <li class="mono tech-item-5">• ReactJS (Frontend)</li>
+                                <li class="mono tech-item-6">• FastAPI (Backend)</li>
+                                <li class="mono tech-item-7">• Flask (English Module)</li>
+                                <li class="mono tech-item-8">• Langchain (Embeddings)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover tech-card-3">
+                            <h4 class="font-semibold text-gray-900 mb-3">Infrastructure</h4>
+                            <ul class="space-y-2 text-sm text-gray-500">
+                                <li class="mono tech-item-9">• MongoDB (Database)</li>
+                                <li class="mono tech-item-10">• AWS EC2 (Deployment)</li>
+                                <li class="mono tech-item-11">• Docker (Containerization)</li>
+                                <li class="mono tech-item-12">• Ollama v0.5.14</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones Section -->
+    <section id="milestones" class="py-20 bg-white relative overflow-hidden cyber-grid">
+        <div class="absolute inset-0 tech-pattern opacity-15"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4 glow-text">Project Milestones</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Key phases and achievements throughout the research journey
+                </p>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 to-cyan-500 h-full opacity-70"></div>
+                
+                <!-- Milestone items -->
+                <div class="space-y-12">
+                    <div class="flex items-center milestone-item">
+                        <div class="flex-1 pr-8 text-right">
+                            <div class="glassmorphism-card p-6 rounded-lg card-hover border-gradient">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Project Proposal</h3>
+                                <p class="text-gray-600 mb-2">Initial research proposal and problem identification</p>
+                                <span class="text-sm text-blue-500 font-medium mono">Phase 1</span>
+                            </div>
+                        </div>
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center neon-glow pulse-animation">
+                            <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                        <div class="flex-1 pl-8"></div>
+                    </div>
+                    
+                    <div class="flex items-center milestone-item">
+                        <div class="flex-1 pr-8"></div>
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center neon-glow pulse-animation">
+                            <i class="fas fa-search text-white"></i>
+                        </div>
+                        <div class="flex-1 pl-8">
+                            <div class="glassmorphism-card p-6 rounded-lg card-hover border-gradient">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Literature Review</h3>
+                                <p class="text-gray-600 mb-2">Comprehensive analysis of existing safety systems</p>
+                                <span class="text-sm text-cyan-500 font-medium mono">Phase 2</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center milestone-item">
+                        <div class="flex-1 pr-8 text-right">
+                            <div class="glassmorphism-card p-6 rounded-lg card-hover border-gradient">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">System Development</h3>
+                                <p class="text-gray-600 mb-2">Implementation of IoT Devices and Others</p>
+                                <span class="text-sm text-blue-500 font-medium mono">Phase 3</span>
+                            </div>
+                        </div>
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center neon-glow pulse-animation">
+                            <i class="fas fa-code text-white"></i>
+                        </div>
+                        <div class="flex-1 pl-8"></div>
+                    </div>
+                    
+                    <div class="flex items-center milestone-item">
+                        <div class="flex-1 pr-8"></div>
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center neon-glow pulse-animation">
+                            <i class="fas fa-vial text-white"></i>
+                        </div>
+                        <div class="flex-1 pl-8">
+                            <div class="glassmorphism-card p-6 rounded-lg card-hover border-gradient">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Testing & Evaluation</h3>
+                                <p class="text-gray-600 mb-2">Performance testing and user feedback collection</p>
+                                <span class="text-sm text-cyan-500 font-medium mono">Phase 4</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center milestone-item">
+                        <div class="flex-1 pr-8 text-right">
+                            <div class="glassmorphism-card p-6 rounded-lg card-hover border-gradient">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Final Report</h3>
+                                <p class="text-gray-600 mb-2">Complete documentation and research findings</p>
+                                <span class="text-sm text-green-500 font-medium mono">Phase 5</span>
+                            </div>
+                        </div>
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center neon-glow pulse-animation">
+                            <i class="fas fa-flag-checkered text-white"></i>
+                        </div>
+                        <div class="flex-1 pl-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section id="downloads" class="py-20 bg-gray-100 relative overflow-hidden">
+        <div class="absolute inset-0 tech-pattern opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4 glow-text">Downloads</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Access research documents, reports, and supplementary materials
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 border border-blue-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-all duration-300">
+                            <i class="fas fa-file-pdf text-blue-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Final Report</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Complete research paper on Generative AI-Driven Chatbots for Module-Specific Educational Support</p>
+                    <a href="./src/24-25J-166.pdf" id="downloadBtn" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 neon-glow mono" download>
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+ 
+                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 border border-green-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-green-200 transition-all duration-300">
+                            <i class="fas fa-code text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Source Code</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Implementation code for all four specialized chatbots with documentation</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
+                        <i class="fab fa-github mr-2"></i>
+                        View Repository
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-cyan-100 border border-cyan-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-cyan-200 transition-all duration-300">
+                            <i class="fas fa-chart-bar text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Datasets</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Training datasets and evaluation metrics used in the research</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white rounded-lg hover:from-cyan-700 hover:to-cyan-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
+                        <i class="fas fa-database mr-2"></i>
+                        Access Data
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 border border-orange-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-orange-200 transition-all duration-300">
+                            <i class="fas fa-play-circle text-orange-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Demo Videos</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Interactive demonstrations of each chatbot's capabilities</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white rounded-lg hover:from-orange-700 hover:to-orange-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
+                        <i class="fas fa-video mr-2"></i>
+                        Watch Demos
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-100 border border-red-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-200 transition-all duration-300">
+                            <i class="fas fa-presentation text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Presentation</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Research presentation slides and supporting materials</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
+                        <i class="fas fa-file-powerpoint mr-2"></i>
+                        View Slides
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-teal-100 border border-teal-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-teal-200 transition-all duration-300">
+                            <i class="fas fa-book text-teal-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Documentation</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Technical documentation and implementation guides</p>
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-lg hover:from-teal-700 hover:to-teal-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
+                        <i class="fas fa-book-open mr-2"></i>
+                        Read Docs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="team" class="py-20 bg-white relative overflow-hidden cyber-grid">
+        <div class="absolute inset-0 tech-pattern opacity-15"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4 glow-text">Our Team</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Meet the researchers behind this innovative educational AI project
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Student Researchers -->
+                <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
+                    <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Dissanayake A.L.</h3>
+                    <p class="text-blue-500 font-medium mb-3 mono">Researcher</p>
+                    <p class="text-gray-600 mb-4">Department of Information Technology<br>Faculty of Computing, SLIIT</p>
+                    <a href="mailto:it21270642@my.sliit.lk" class="inline-flex items-center text-blue-500 hover:text-blue-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        it21270642@my.sliit.lk
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
+                    <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Mindinu G.P.D.A.</h3>
+                    <p class="text-green-500 font-medium mb-3 mono">Researcher</p>
+                    <p class="text-gray-600 mb-4">Department of Information Technology<br>Faculty of Computing, SLIIT</p>
+                    <a href="mailto:it21203626@my.sliit.lk" class="inline-flex items-center text-green-500 hover:text-green-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        it21203626@my.sliit.lk
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
+                    <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Samanayaka P.V.I.R.</h3>
+                    <p class="text-cyan-500 font-medium mb-3 mono">Researcher</p>
+                    <p class="text-gray-600 mb-4">Department of Information Technology<br>Faculty of Computing, SLIIT</p>
+                    <a href="mailto:it213886202@my.sliit.lk" class="inline-flex items-center text-cyan-500 hover:text-cyan-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        it213886202@my.sliit.lk
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
+                    <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Sepala S. N.</h3>
+                    <p class="text-orange-500 font-medium mb-3 mono">Researcher</p>
+                    <p class="text-gray-600 mb-4">Department of Information Technology<br>Faculty of Computing, SLIIT</p>
+                    <a href="mailto:it21232572@my.sliit.lk" class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        it21232572@my.sliit.lk
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col md:flex-row justify-center gap-32">                
+                <!-- Supervisors -->
+                <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
+                    <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Mr. Nelum Amarasena</h3>
+                    <p class="text-yellow-500 font-medium mb-3 mono">Project Supervisor</p>
+                    <p class="text-gray-600 mb-4">Department of Information Technology<br>Faculty of Computing, SLIIT</p>
+                    <a href="mailto:nelum.a@sliit.lk" class="inline-flex items-center text-yellow-500 hover:text-yellow-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        nelum.a@sliit.lk
+                    </a>
+                </div>
+                
+                <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
+                    <div class="w-24 h-24 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Prof. Anuradha Jayakody</h3>
+                    <p class="text-teal-500 font-medium mb-3 mono">Co-Supervisor</p>
+                    <p class="text-gray-600 mb-4">Department of Information Technology<br>Faculty of Computing, SLIIT</p>
+                    <a href="mailto:anuradha.j@sliit.lk" class="inline-flex items-center text-teal-500 hover:text-teal-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        anuradha.j@sliit.lk
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-20 bg-gray-100 relative overflow-hidden">
+        <div class="absolute inset-0 tech-pattern opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4 glow-text">Contact Us</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Get in touch with our research team for collaboration opportunities or inquiries
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="glassmorphism-card p-8 rounded-lg border-gradient">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6 glow-text">Get In Touch</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start group">
+                                <div class="w-12 h-12 bg-blue-100 border border-blue-200 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 group-hover:bg-blue-200 transition-all duration-300">
+                                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-1 glow-text">Address</h4>
+                                    <p class="text-gray-600">Sri Lanka Institute of Information Technology<br>New Kandy Road, Malabe, Sri Lanka</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start group">
+                                <div class="w-12 h-12 bg-green-100 border border-green-200 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 group-hover:bg-green-200 transition-all duration-300">
+                                    <i class="fas fa-envelope text-green-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-1 glow-text">Email</h4>
+                                    <p class="text-gray-600">it21/270642/203626/3886202/388620@my.sliit.lk</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start group">
+                                <div class="w-12 h-12 bg-cyan-100 border border-cyan-200 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 group-hover:bg-cyan-200 transition-all duration-300">
+                                    <i class="fas fa-graduation-cap text-cyan-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-1 glow-text">Department</h4>
+                                    <p class="text-gray-600">Faculty of Computing<br>Department of Information Technology</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="gradient-bg p-8 rounded-lg text-white neon-glow">
+                        <h3 class="text-xl font-semibold mb-4 glow-text">Follow Our Research</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-opacity-30 transition-all duration-200 transform hover:scale-110">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-opacity-30 transition-all duration-200 transform hover:scale-110">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-opacity-30 transition-all duration-200 transform hover:scale-110">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="glassmorphism-card p-8 rounded-lg border-gradient">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6 glow-text">Send us a Message</h3>
+                    
+                    <form class="space-y-6" id="contactForm">
+                        <div class="relative">
+                            <input type="text" id="name" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Your Name" required>
+                            <label for="name" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Name</label>
+                        </div>
+                        
+                        <div class="relative">
+                            <input type="email" id="email" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Your Email" required>
+                            <label for="email" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Email</label>
+                        </div>
+                        
+                        <div class="relative">
+                            <input type="text" id="subject" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Subject" required>
+                            <label for="subject" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Subject</label>
+                        </div>
+                        
+                        <div class="relative">
+                            <textarea id="message" rows="5" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent resize-none" placeholder="Your Message" required></textarea>
+                            <label for="message" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Message</label>
+                        </div>
+                        
+                        <button type="submit" class="w-full gradient-bg text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transform hover:scale-105 transition-all duration-200 focus:ring-2 focus:ring-blue-500/20 neon-glow">
+                            <span class="flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                <span id="buttonText">Send Message</span>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 text-gray-900 py-12 border-t border-gray-200 cyber-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 gradient-text glow-text">Research Project</h3>
+                    <p class="text-gray-600 mb-4">In-plant Safety Emergency Warning System</p>
+                    <p class="text-gray-600">© 2025 SLIIT Faculty of Computing</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 gradient-text glow-text">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Home</a></li>
+                        <li><a href="#scope" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Project Scope</a></li>
+                        <li><a href="#milestones" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Milestones</a></li>
+                        <li><a href="#downloads" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Downloads</a></li>
+                        <li><a href="#team" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Team</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 gradient-text glow-text">Institution</h3>
+                    <p class="text-gray-600 mb-2">Sri Lanka Institute of Information Technology</p>
+                    <p class="text-gray-600 mb-2">Faculty of Computing</p>
+                    <p class="text-gray-600">Malabe, Sri Lanka</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 mt-8 pt-8 text-center">
+                <p class="text-gray-600 glow-text">Empowering Safer Workplaces with Smart Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 gradient-bg text-white rounded-full shadow-lg hover:opacity-90 transform hover:scale-110 transition-all duration-200 opacity-0 invisible neon-glow">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        
+        // Use getElementById to avoid querySelector issues
+        const downloadBtn = document.getElementById('downloadBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                const link = document.createElement('a');
+                link.href = './src/24-25J-166.pdf';
+                link.download = '24-25J-166.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        } else {
+            console.error('Element with ID "downloadBtn" not found.');
+        }
+
+        // Initialize Framer Motion
+        const { motion, AnimatePresence } = window.Motion;
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        function updateThemeIcon(theme) {
+            const iconClass = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+            themeIcon.className = `fas ${iconClass}`;
+            themeIconMobile.className = `fas ${iconClass} text-xl`;
+        }
+
+        function toggleTheme() {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Auto-hide navbar on scroll
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        const navbar = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Clear any existing timeout
+            clearTimeout(scrollTimeout);
+            
+            // Always show navbar at the very top
+            if (scrollTop <= 100) {
+                navbar.classList.remove('-translate-y-full');
+                navbar.classList.add('translate-y-0');
+                lastScrollTop = scrollTop;
+                return;
+            }
+            
+            // Scrolling down - hide navbar
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.classList.remove('translate-y-0');
+                navbar.classList.add('-translate-y-full');
+            } 
+            // Scrolling up - show navbar
+            else if (scrollTop < lastScrollTop) {
+                navbar.classList.remove('-translate-y-full');
+                navbar.classList.add('translate-y-0');
+            }
+            
+            lastScrollTop = scrollTop;
+            
+            // Add a small delay before hiding to prevent flickering on small scrolls
+            scrollTimeout = setTimeout(() => {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    navbar.classList.remove('translate-y-0');
+                    navbar.classList.add('-translate-y-full');
+                }
+            }, 150);
+        });
+
+        // Show/hide navbar based on mouse position
+        document.addEventListener('mousemove', (e) => {
+            const isNearTop = e.clientY <= 80;
+            const isOverNavbar = navbar.contains(e.target);
+            const hasScrolled = window.pageYOffset > 100;
+
+            if (isNearTop && hasScrolled) {
+                // Show navbar
+                navbar.classList.remove('-translate-y-full');
+                navbar.classList.add('translate-y-0');
+            } else if (!isOverNavbar && hasScrolled) {
+                // Hide navbar if mouse is away from navbar
+                navbar.classList.remove('translate-y-0');
+                navbar.classList.add('-translate-y-full');
+            }
+        });
+
+        // Ensure navbar is visible when mobile menu is toggled
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                // Show navbar when opening mobile menu
+                navbar.classList.remove('-translate-y-full');
+                navbar.classList.add('translate-y-0');
+                
+                // Toggle mobile menu
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollIndicator').style.width = scrollPercent + '%';
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission with enhanced animations
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const buttonText = document.getElementById('buttonText');
+            const originalText = buttonText.innerHTML;
+            
+            // Add loading state with animation
+            submitButton.classList.add('animate-pulse');
+            buttonText.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            submitButton.disabled = true;
+            
+            // Simulate form submission with realistic delay
+            setTimeout(() => {
+                // Success animation
+                submitButton.classList.remove('animate-pulse');
+                submitButton.classList.add('bg-green-500');
+                buttonText.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                
+                // Show success notification
+                showNotification('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    submitButton.classList.remove('bg-green-500');
+                    buttonText.innerHTML = originalText;
+                    submitButton.disabled = false;
+                }, 3000);
+            }, 2000);
+        });
+
+        // Enhanced notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-all duration-300 ${
+                type === 'success' ? 'bg-green-500' : 
+                type === 'error' ? 'bg-red-500' : 
+                'bg-blue-500'
+            } text-white max-w-sm`;
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'} mr-3"></i>
+                    <p class="flex-1">${message}</p>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    
+                    // Add stagger effect for form elements
+                    if (entry.target.querySelector('form')) {
+                        const formElements = entry.target.querySelectorAll('.relative');
+                        formElements.forEach((el, index) => {
+                            setTimeout(() => {
+                                el.style.animation = `fadeInUp 0.6s ease forwards`;
+                            }, index * 100);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe contact section
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            observer.observe(contactSection);
+        }
+
+        // Enhanced input focus animations
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('transform', 'scale-105');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('transform', 'scale-105');
+            });
+        });
+
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .animate-fade-in {
+                animation: fadeInUp 0.6s ease forwards;
+            }
+            
+            .glow-text {
+                text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+            }
+            
+            .border-gradient {
+                border: 2px solid transparent;
+                background: linear-gradient(var(--light-gray), var(--light-gray)) padding-box,
+                            linear-gradient(135deg, var(--primary-blue), var(--cyan)) border-box;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
