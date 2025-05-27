@@ -30,6 +30,14 @@
             --blue-dark: #2563eb;
             --cyan: #06b6d4;
             --cyan-dark: #0891b2;
+            --gray-900: #1f2937;
+            --gray-400: #9ca3af;
+            --gray-300: #d1d5db;
+            --gray-700: #374151;
+            --green-600: #16a34a;
+            --yellow-500: #eab308;
+            --purple-600: #9333ea;
+            --teal-600: #0d9488;
         }
         
         [data-theme="dark"] {
@@ -45,6 +53,14 @@
             --blue-dark: #3b82f6;
             --cyan: #22d3ee;
             --cyan-dark: #06b6d4;
+            --gray-900: #f3f4f6;
+            --gray-400: #9ca3af;
+            --gray-300: #6b7280;
+            --gray-700: #4b5563;
+            --green-600: #22c55e;
+            --yellow-500: #facc15;
+            --purple-600: #a855f7;
+            --teal-600: #14b8a6;
         }
         
         body {
@@ -305,6 +321,127 @@
         [data-theme="dark"] .border-cyan-200 {
             border-color: rgba(6, 182, 212, 0.2);
         }
+
+        /* Additional styles for Methodology section */
+        .methodology-section {
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+        }
+
+        .methodology-title {
+            color: var(--cyan);
+        }
+
+        .methodology-subtitle {
+            color: var(--gray-400);
+        }
+
+        .methodology-subheading {
+            color: var(--cyan);
+        }
+
+        .methodology-card {
+            background-color: var(--secondary-bg);
+            border-color: var(--border-color);
+        }
+
+        .methodology-subcard {
+            background-color: var(--card-bg);
+            border-color: var(--border-color);
+        }
+
+        .methodology-list {
+            color: var(--gray-300);
+        }
+
+        .methodology-list-accent {
+            color: var(--cyan);
+        }
+
+        .methodology-accent-blue {
+            border-color: var(--primary-blue);
+        }
+
+        .methodology-accent-cyan {
+            border-color: var(--cyan);
+        }
+
+        .methodology-accent-green {
+            border-color: var(--green-600);
+        }
+
+        .methodology-accent-yellow {
+            border-color: var(--yellow-500);
+        }
+
+        .methodology-accent-purple {
+            border-color: var(--purple-600);
+        }
+
+        .methodology-accent-teal {
+            border-color: var(--teal-600);
+        }
+
+        .methodology-text-primary {
+            color: var(--text-primary);
+        }
+
+        .methodology-text-secondary {
+            color: var(--text-secondary);
+        }
+
+        .methodology-text-gray {
+            color: var(--gray-400);
+        }
+
+        .methodology-text-blue {
+            color: var(--primary-blue);
+        }
+
+        .methodology-text-cyan {
+            color: var(--cyan);
+        }
+
+        .methodology-text-green {
+            color: var(--green-600);
+        }
+
+        .methodology-text-yellow {
+            color: var(--yellow-500);
+        }
+
+        .methodology-text-purple {
+            color: var(--purple-600);
+        }
+
+        .methodology-text-teal {
+            color: var(--teal-600);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+        }
+        
+        .border-gradient {
+            border: 2px solid transparent;
+            background: linear-gradient(var(--light-gray), var(--light-gray)) padding-box,
+                        linear-gradient(135deg, var(--primary-blue), var(--cyan)) border-box;
+        }
     </style>
 </head>
 
@@ -371,15 +508,13 @@
     <!-- Hero Section -->
     <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden cyber-grid">
         <!-- Alert Icons Floating Around -->
-        <!-- Alert & Safety Icons Floating Around -->
-<i class="fa-solid fa-triangle-exclamation text-yellow-400 text-3xl absolute top-10 left-10 animate-pulse"></i>
-<i class="fa-solid fa-fire-extinguisher text-red-500 text-4xl absolute bottom-20 right-10 animate-bounce"></i>
-<i class="fa-solid fa-helmet-safety text-yellow-400 text-4xl absolute top-1/2 left-24 floating-animation-robot"></i>
-<i class="fa-solid fa-person-running text-green-400 text-3xl absolute bottom-10 left-1/3 animate-ping"></i>
-<i class="fa-solid fa-fire-flame-curved text-red-500 text-4xl absolute top-20 right-1/4 animate-bounce"></i>
-<i class="fa-solid fa-bolt text-orange-400 text-3xl absolute top-28 right-10 animate-pulse"></i>
-<i class="fa-solid fa-fan text-blue-400 text-3xl absolute bottom-16 left-10 animate-spin"></i>
-
+        <i class="fa-solid fa-triangle-exclamation text-yellow-400 text-3xl absolute top-10 left-10 animate-pulse"></i>
+        <i class="fa-solid fa-fire-extinguisher text-red-500 text-4xl absolute bottom-20 right-10 animate-bounce"></i>
+        <i class="fa-solid fa-helmet-safety text-yellow-400 text-4xl absolute top-1/2 left-24 floating-animation-robot"></i>
+        <i class="fa-solid fa-person-running text-green-400 text-3xl absolute bottom-10 left-1/3 animate-ping"></i>
+        <i class="fa-solid fa-fire-flame-curved text-red-500 text-4xl absolute top-20 right-1/4 animate-bounce"></i>
+        <i class="fa-solid fa-bolt text-orange-400 text-3xl absolute top-28 right-10 animate-pulse"></i>
+        <i class="fa-solid fa-fan text-blue-400 text-3xl absolute bottom-16 left-10 animate-spin"></i>
 
         <div class="absolute inset-0 tech-pattern opacity-20"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -408,7 +543,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Project Scope Section -->
     <section id="scope" class="py-20 bg-gray-100 relative overflow-hidden">
@@ -476,7 +610,7 @@
                             <h4 class="font-semibold text-gray-900 mb-2">Current Limitations</h4>
                             <ul class="text-sm text-gray-500 space-y-1">
                                 <li class="limitation-item-1">• Lack of precise location tracking during emergencies</li>
-                                <li class="limitation-item-3">• nability to predict motor failures or future hazards</li>
+                                <li class="limitation-item-3">• Inability to predict motor failures or future hazards</li>
                                 <li class="limitation-item-3">• Delayed and uncoordinated emergency responses</li>
                             </ul>
                         </div>
@@ -560,94 +694,271 @@
                 </div>
             </div>
 
-            <!-- Methodology -->
-            <div id="methodology" class="mb-20 methodology-card">
-                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
-                    <div class="flex items-center mb-6 methodology-header">
-                        <div class="w-12 h-12 bg-cyan-100 border border-cyan-200 rounded-full flex items-center justify-center mr-4 icon-container">
-                            <i class="fas fa-cogs text-cyan-500 text-xl"></i>
+            <!-- Technologies Used -->
+            <div id="technologies" class="mb-5 pt-20">
+                <div class="glassmorphism-card rounded-3xl p-12 border-gradient">                   
+                    <div class="text-center mb-12">
+                        <div class="inline-flex items-center justify-center w-14 h-14 bg-gray-500/20 border border-gray-500/30 rounded-full mb-4 icon-container">
+                            <i class="fas fa-microchip text-gray-400 text-xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Methodology</h3>
-                    </div>
-                    <div id="methodology-cards" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 methodology-grid">
-                    <!-- Motor Risk Classification -->
-                    <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover method-card-1">
-                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
-                            <i class="fa-solid fa-gauge-high text-white text-xl"></i> <!-- Motor stress/load icon -->
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Motor Risk Classification</h4>
-                        <p class="text-sm text-gray-500">Classify industrial motor risk levels using machine learning models</p>
+                        <h3 class="text-2xl font-bold text-white">Technologies Used</h3>
                     </div>
 
-                    <!-- Fire Intensity Analysis -->
-                    <div class="bg-white border border-cyan-100 p-6 rounded-lg shadow-sm card-hover method-card-2">
-                        <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
-                            <i class="fa-solid fa-fire-flame-curved text-white text-xl"></i> <!-- Fire hazard icon -->
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Fire Intensity Analysis</h4>
-                        <p class="text-sm text-gray-500">Image processing techniques to detect and assess fire severity</p>
-                    </div>
+                    <div class="max-w-6xl mx-auto">
+                        <p class="text-lg text-gray-300 mb-12 text-center">
+                            Our project utilizes a robust and modern tech stack to build an intelligent, scalable, and efficient system.
+                        </p>
 
-                    <!-- Responder Authentication -->
-                    <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover method-card-3">
-                        <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
-                            <i class="fa-solid fa-id-card-clip text-white text-xl"></i> <!-- RFID responder badge -->
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Responder Authentication</h4>
-                        <p class="text-sm text-gray-500">RFID technology to verify and log authorized personnel</p>
-                    </div>
+                        <!-- Technology Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-14">
+                            <!-- Python -->
+                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">Python</h4>
+                                <p class="text-xs methodology-text-gray">Core Backend Language</p>
+                            </div>
 
-                    <!-- Emergency Detection -->
-                    <div class="bg-white border border-cyan-100 p-6 rounded-lg shadow-sm card-hover method-card-4">
-                        <div class="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 method-icon">
-                            <i class="fa-solid fa-radiation text-white text-xl"></i> <!-- Hazard detection icon -->
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Emergency Detection</h4>
-                        <p class="text-sm text-gray-500">IoT sensors and image processing for real-time hazard identification</p>
-                    </div>
-                </div>
+                            <!-- LangChain -->
+                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://images.seeklogo.com/logo-png/61/3/langchain-icon-logo-png_seeklogo-611655.png">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">LangChain</h4>
+                                <p class="text-xs methodology-text-gray">LLM Framework</p>
+                            </div>
 
+                            <!-- ChromaDB -->
+                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://miro.medium.com/v2/resize:fit:793/1*2crwn9fsu58hVQua-dEa3w.png" alt="ChromaDB Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">Chroma DB</h4>
+                                <p class="text-xs methodology-text-gray">Vector Database</p>
+                            </div>
+
+                            <!-- Docker -->
+                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" alt="Docker Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">Docker</h4>
+                                <p class="text-xs methodology-text-gray">Containerization</p>
+                            </div>
+
+                            <!-- Azure -->
+                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" alt="Azure Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">Azure</h4>
+                                <p class="text-xs methodology-text-gray">Cloud Infrastructure</p>
+                            </div>
+
+                            <!-- GitHub -->
+                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png" alt="GitHub Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">GitHub</h4>
+                                <p class="text-xs methodology-text-gray">Version Control</p>
+                            </div>
+
+                            <!-- Google Colab -->
+                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg" alt="Colab Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">Google Colab</h4>
+                                <p class="text-xs methodology-text-gray">Cloud Notebook</p>
+                            </div>
+
+                            <!-- Jupyter Notebook -->
+                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">Jupyter Notebook</h4>
+                                <p class="text-xs methodology-text-gray">Experimentation Interface</p>
+                            </div>
+
+                            <!-- React.js -->
+                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">React.js</h4>
+                                <p class="text-xs methodology-text-gray">Frontend Library</p>
+                            </div>
+
+                            <!-- Node.js -->
+                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">Node.js</h4>
+                                <p class="text-xs methodology-text-gray">Runtime Environment</p>
+                            </div>
+
+                            <!-- SQLite3 -->
+                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
+                                <div class="w-20 h-20 mx-auto mb-4">
+                                    <img src="https://images.icon-icons.com/2699/PNG/512/sqlite_logo_icon_169724.png" alt="SQLite Logo" class="w-16 h-16 object-contain">
+                                </div>
+                                <h4 class="font-bold methodology-text-primary mb-2">SQLite3</h4>
+                                <p class="text-xs methodology-text-gray">Lightweight Database</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Technologies Used -->
-            <div id="technologies" class="mb-20 tech-card">
-                <div class="glassmorphism-card rounded-2xl p-8 card-hover border-gradient">
-                    <div class="flex items-center mb-6 tech-header">
-                        <div class="w-12 h-12 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center mr-4 icon-container">
-                            <i class="fas fa-microchip text-gray-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Technologies Used</h3>
-                    </div>
-                    <div id="tech-cards" class="grid md:grid-cols-3 gap-6 tech-grid">
-                        <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover tech-card-1">
-                            <h4 class="font-semibold text-gray-900 mb-3">AI Models</h4>
-                            <ul class="space-y-2 text-sm text-gray-500">
-                                <li class="mono tech-item-1">• DeepSeek, Phi-3, CodeBERT</li>
-                                <li class="mono tech-item-2">• Meta-Llama-3.1-8B-Instruct</li>
-                                <li class="mono tech-item-3">• Gemma LLM</li>
-                                <li class="mono tech-item-4">• Mathewhe/DCLM-7B-Chat</li>
-                            </ul>
-                        </div>
-                        <div class="bg-white border border-cyan-100 p-6 rounded-lg shadow-sm card-hover tech-card-2">
-                            <h4 class="font-semibold text-gray-900 mb-3">Frameworks</h4>
-                            <ul class="space-y-2 text-sm text-gray-500">
-                                <li class="mono tech-item-5">• ReactJS (Frontend)</li>
-                                <li class="mono tech-item-6">• FastAPI (Backend)</li>
-                                <li class="mono tech-item-7">• Flask (English Module)</li>
-                                <li class="mono tech-item-8">• Langchain (Embeddings)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-white border border-blue-100 p-6 rounded-lg shadow-sm card-hover tech-card-3">
-                            <h4 class="font-semibold text-gray-900 mb-3">Infrastructure</h4>
-                            <ul class="space-y-2 text-sm text-gray-500">
-                                <li class="mono tech-item-9">• MongoDB (Database)</li>
-                                <li class="mono tech-item-10">• AWS EC2 (Deployment)</li>
-                                <li class="mono tech-item-11">• Docker (Containerization)</li>
-                                <li class="mono tech-item-12">• Ollama v0.5.14</li>
-                            </ul>
-                        </div>
-                    </div>
+    <!-- Methodology Section -->
+    <section id="methodology" class="px-6 md:px-16 py-12 methodology-section">
+        <!-- Title -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold tracking-wide methodology-title">📡 Methodology</h2>
+            <p class="text-sm methodology-subtitle mt-2">A comprehensive system combining predictive maintenance, real-time detection, and intelligent emergency response.</p>
+        </div>
+
+        <!-- 1. Unified System Architecture -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold methodology-subheading mb-4">🔧 Unified Emergency Response Framework</h3>
+            <div class="grid md:grid-cols-2 gap-6 methodology-card p-6 rounded-xl border">
+                <div>
+                    <h4 class="font-bold methodology-text-primary mb-2">Core Objectives</h4>
+                    <ul class="list-disc pl-5 text-sm methodology-list space-y-1">
+                        <li>Enable real-time incident detection and response</li>
+                        <li>Predict future machine failures to reduce downtime</li>
+                        <li>Ensure only authorized personnel can acknowledge alerts</li>
+                        <li>Visualize trends and risks to enhance workplace safety</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold methodology-text-primary mb-2">Technology Stack</h4>
+                    <ul class="list-disc pl-5 text-sm methodology-list space-y-1">
+                        <li>FastAPI for backend services</li>
+                        <li>Python ML Models (GaussianNB, SARIMA)</li>
+                        <li>OpenCV for fire detection</li>
+                        <li>RFID & ESP32 for responder validation</li>
+                        <li>MySQL for log data storage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Core Components -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold methodology-subheading mb-4">🧩 Core System Modules</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Motor Risk Classification -->
+                <div class="methodology-subcard border methodology-accent-blue p-5 rounded-xl">
+                    <h4 class="methodology-text-primary font-bold text-lg mb-2">Motor Risk Classification</h4>
+                    <p class="text-sm methodology-text-gray mb-2">
+                        Predicts motor failure risk using live sensor values. Models are trained using Gaussian Naive Bayes, optimized through Grid Search for accuracy.
+                    </p>
+                    <ul class="text-xs methodology-text-blue list-disc pl-5">
+                        <li>Features: Voltage, Current, Temp, Vibration</li>
+                        <li>Outcome: Normal / Low / Moderate / High</li>
+                    </ul>
+                </div>
+
+                <!-- Fire Intensity Analysis -->
+                <div class="methodology-subcard border methodology-accent-cyan p-5 rounded-xl">
+                    <h4 class="methodology-text-primary font-bold text-lg mb-2">Fire Intensity Analysis</h4>
+                    <p class="text-sm methodology-text-gray mb-2">
+                        Uses live camera feeds to detect flames using color & shape-based filters. Classifies intensity and automates alert triggering.
+                    </p>
+                    <ul class="text-xs methodology-text-cyan list-disc pl-5">
+                        <li>Technique: Color thresholding, edge detection</li>
+                        <li>Output: High / Medium / Low fire severity</li>
+                    </ul>
+                </div>
+
+                <!-- Responder Authentication -->
+                <div class="methodology-subcard border methodology-accent-blue p-5 rounded-xl">
+                    <h4 class="methodology-text-primary font-bold text-lg mb-2">Responder Authentication</h4>
+                    <p class="text-sm methodology-text-gray mb-2">
+                        Ensures only trained personnel can deactivate or handle emergencies via RFID tags and secure logging.
+                    </p>
+                    <ul class="text-xs methodology-text-blue list-disc pl-5">
+                        <li>Hardware: RFID + ESP32</li>
+                        <li>Action: Role-based acknowledgment logging</li>
+                    </ul>
+                </div>
+
+                <!-- Emergency Detection & Alerting -->
+                <div class="methodology-subcard border methodology-accent-cyan p-5 rounded-xl">
+                    <h4 class="methodology-text-primary font-bold text-lg mb-2">Emergency Detection & Alerting</h4>
+                    <p class="text-sm methodology-text-gray mb-2">
+                        Uses sensors, buttons, and camera modules to detect abnormal events, pushing alerts to response units in real-time.
+                    </p>
+                    <ul class="text-xs methodology-text-cyan list-disc pl-5">
+                        <li>Devices: IoT nodes, manual triggers</li>
+                        <li>Alerts: Location-based visual/audio alerts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Implementation & Hosting -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold methodology-subheading mb-4">⚙️ Technical Implementation</h3>
+            <div class="grid md:grid-cols-3 gap-6 text-sm">
+                <div class="methodology-subcard p-5 rounded-xl border methodology-accent-gray">
+                    <h4 class="methodology-text-primary font-semibold mb-2">Backend APIs</h4>
+                    <p class="methodology-text-gray">Built with FastAPI; handles alerts, predictions, and log retrieval.</p>
+                </div>
+
+                <div class="methodology-subcard p-5 rounded-xl border methodology-accent-gray">
+                    <h4 class="methodology-text-primary font-semibold mb-2">Authentication</h4>
+                    <p class="methodology-text-gray">JWT-secured access control for admin panel and responder validation.</p>
+                </div>
+
+                <div class="methodology-subcard p-5 rounded-xl border methodology-accent-gray">
+                    <h4 class="methodology-text-primary font-semibold mb-2">Deployment</h4>
+                    <p class="methodology-text-gray">Hosted on a local XAMPP server with options to expand via cloud deployment.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Evaluation Metrics -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold methodology-subheading mb-4">📈 Evaluation & Results</h3>
+            <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div class="methodology-subcard p-5 rounded-xl border methodology-accent-green">
+                    <h4 class="methodology-text-green font-bold mb-1">Predictive Accuracy</h4>
+                    <p class="methodology-text-gray">SARIMA forecasts achieved 87% accuracy in machinery failure predictions. Fire detection reached 92% precision under test conditions.</p>
+                </div>
+                <div class="methodology-subcard p-5 rounded-xl border methodology-accent-yellow">
+                    <h4 class="methodology-text-yellow font-bold mb-1">System Responsiveness</h4>
+                    <p class="methodology-text-gray">Average emergency acknowledgment time reduced by 43% using RFID and real-time alerts.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Future Directions -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold methodology-subheading mb-4">🚀 Future Enhancements</h3>
+            <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div class="methodology-subcard p-5 rounded-xl border methodology-accent-purple">
+                    <h4 class="methodology-text-purple font-bold mb-1">Planned Improvements</h4>
+                    <ul class="list-disc pl-5 methodology-text-gray">
+                        <li>Integrate AI-based object detection for human accident prediction</li>
+                        <li>Cloud-based centralized dashboard</li>
+                        <li>Real-time SMS/email alerts for off-site responders</li>
+                    </ul>
+                </div>
+                <div class="methodology-subcard p-5 rounded-xl border methodology-accent-teal">
+                    <h4 class="methodology-text-teal font-bold mb-1">Long-Term Vision</h4>
+                    <ul class="list-disc pl-5 methodology-text-gray">
+                        <li>Multi-location support for large enterprises</li>
+                        <li>Incident heatmaps and data-driven policy recommendations</li>
+                        <li>AI-assisted evacuation guidance</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -745,103 +1056,89 @@
     </section>
 
     <!-- Downloads Section -->
-    <section id="downloads" class="py-20 bg-gray-100 relative overflow-hidden">
-        <div class="absolute inset-0 tech-pattern opacity-20"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold gradient-text mb-4 glow-text">Downloads</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Access research documents, reports, and supplementary materials
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-blue-100 border border-blue-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-all duration-300">
-                            <i class="fas fa-file-pdf text-blue-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Final Report</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">Complete research paper on Generative AI-Driven Chatbots for Module-Specific Educational Support</p>
-                    <a href="./src/24-25J-166.pdf" id="downloadBtn" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 neon-glow mono" download>
-                        <i class="fas fa-download mr-2"></i>
-                        Download PDF
-                    </a>
-                </div>
- 
-                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-green-100 border border-green-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-green-200 transition-all duration-300">
-                            <i class="fas fa-code text-green-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Source Code</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">Implementation code for all four specialized chatbots with documentation</p>
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
-                        <i class="fab fa-github mr-2"></i>
-                        View Repository
-                    </a>
-                </div>
-                
-                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-cyan-100 border border-cyan-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-cyan-200 transition-all duration-300">
-                            <i class="fas fa-chart-bar text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Datasets</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">Training datasets and evaluation metrics used in the research</p>
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white rounded-lg hover:from-cyan-700 hover:to-cyan-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
-                        <i class="fas fa-database mr-2"></i>
-                        Access Data
-                    </a>
-                </div>
-                
-                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-orange-100 border border-orange-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-orange-200 transition-all duration-300">
-                            <i class="fas fa-play-circle text-orange-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Demo Videos</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">Interactive demonstrations of each chatbot's capabilities</p>
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white rounded-lg hover:from-orange-700 hover:to-orange-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
-                        <i class="fas fa-video mr-2"></i>
-                        Watch Demos
-                    </a>
-                </div>
-                
-                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-red-100 border border-red-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-200 transition-all duration-300">
-                            <i class="fas fa-presentation text-red-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Presentation</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">Research presentation slides and supporting materials</p>
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
-                        <i class="fas fa-file-powerpoint mr-2"></i>
-                        View Slides
-                    </a>
-                </div>
-                
-                <div class="glassmorphism-card p-8 rounded-lg card-hover border-gradient group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-teal-100 border border-teal-200 rounded-lg flex items-center justify-center mr-4 group-hover:bg-teal-200 transition-all duration-300">
-                            <i class="fas fa-book text-teal-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 glow-text">Documentation</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6">Technical documentation and implementation guides</p>
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-lg hover:from-teal-700 hover:to-teal-800 transform hover:scale-105 transition-all duration-200 neon-glow mono">
-                        <i class="fas fa-book-open mr-2"></i>
-                        Read Docs
-                    </a>
-                </div>
+    <section id="downloads" class="py-20 bg-gray-100 relative overflow-hidden cyber-grid">
+    <div class="absolute inset-0 tech-pattern opacity-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold gradient-text mb-4 glow-text">Downloads</h2>
+            <p class="text-lg methodology-text-gray max-w-3xl mx-auto">
+                Access research documents, reports, and supplementary materials
+            </p>
+        </div>
+
+        <!-- Documents Section -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-semibold mb-6 border-b methodology-accent-purple pb-2 methodology-subheading">Documents</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <a href="https://drive.google.com/file/d/1co5Di5-zniazbxxHS5WWD5dGfNEkGUGR/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-purple transition card-hover">
+                    <span class="block font-medium methodology-text-purple">Topic Assessment (Group)</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-blue transition card-hover">
+                    <span class="block font-medium methodology-text-blue">Project Charter (Group)</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1_RM6CFxDaY08CCecwvdYygLqaVMshNcT?usp=sharing" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-green transition card-hover">
+                    <span class="block font-medium methodology-text-green">Project Proposal (Individual)</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-yellow transition card-hover">
+                    <span class="block font-medium methodology-text-yellow">Status Documents 1 (Individual)</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-yellow transition card-hover">
+                    <span class="block font-medium methodology-text-yellow">Status Documents 2 (Individual)</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1IR-PWhTauKAbD_yZzC5o8pKMs_uKqQS3/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-red-500 transition card-hover">
+                    <span class="block font-medium text-red-400 methodology-text-primary">Research Paper (Group)</span>
+                </a>
+                <a href="" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-pink-500 transition card-hover">
+                    <span class="block font-medium text-pink-400 methodology-text-primary">Final Report (Group)</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1wCqm1rpU5jlAKFaPj9bp3MNN50vcg9id?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-pink-500 transition card-hover">
+                    <span class="block font-medium text-pink-400 methodology-text-primary">Final Report (Individual)</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-indigo-500 transition card-hover">
+                    <span class="block font-medium text-indigo-400 methodology-text-primary">Poster (Group) - Coming Soon</span>
+                </a>
             </div>
         </div>
-    </section>
+
+        <!-- Presentations Section -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-semibold mb-6 border-b border-red-600 pb-2 methodology-subheading">Presentations</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <a href="https://docs.google.com/presentation/d/1Ws_qPRJXPtGnYXRdemB_2goEryj7IjVh/edit?usp=sharing&ouid=111574936704799287849&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-red-400 transition card-hover">
+                    <span class="block font-medium text-red-300 methodology-text-primary">Project Proposal</span>
+                </a>
+                <a href="https://docs.google.com/presentation/d/1g0zDlwSLtmpb6IbczUcqD5OW09Xw5YZ4/edit?usp=drive_link&ouid=111574936704799287849&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-400 transition card-hover">
+                    <span class="block font-medium text-orange-300 methodology-text-primary">Progress Presentation 1</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1mPJ5OlPoF5WaUp51h1x6kYHo-v8YA_IC/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-400 transition card-hover">
+                    <span class="block font-medium text-orange-300 methodology-text-primary">Progress Presentation 2</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-300 transition card-hover">
+                    <span class="block font-medium text-orange-200 methodology-text-primary">Final Presentation - Coming Soon</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="mb-8">
+            <h3 class="text-2xl font-semibold mb-6 border-b border-green-600 pb-2 methodology-subheading">Resources</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-green-400 transition card-hover">
+                    <span class="block font-medium text-green-300 methodology-text-primary">Source Code</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1-6dSEBOdgeNbQUzAXjTJPz9d0V82Oyoa?usp=sharing" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-blue-400 transition card-hover">
+                    <span class="block font-medium text-blue-300 methodology-text-primary">Datasets</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/13SL3W01zx1X4zCE83aCP-ARZD3QETDy0?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-yellow-400 transition card-hover">
+                    <span class="block font-medium text-yellow-300 methodology-text-primary">Demo</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-400 transition card-hover">
+                    <span class="block font-medium text-orange-300 methodology-text-primary">Development Walkthroughs</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Our Team Section -->
     <section id="team" class="py-20 bg-white relative overflow-hidden cyber-grid">
@@ -856,9 +1153,9 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Student Researchers -->
-                <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
-                    <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                <div class="glassmorphism-card p-10 rounded-lg card-hover text-center border-gradient group">
+                    <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <img src="/src/ashen2.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Dissanayake A.L.</h3>
                     <p class="text-blue-500 font-medium mb-3 mono">Researcher</p>
@@ -870,8 +1167,8 @@
                 </div>
                 
                 <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
-                    <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <img src="/src/anuga.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Mindinu G.P.D.A.</h3>
                     <p class="text-green-500 font-medium mb-3 mono">Researcher</p>
@@ -883,8 +1180,8 @@
                 </div>
                 
                 <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
-                    <div class="w-24 h-24 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <img src="/src/ashen.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Samanayaka P.V.I.R.</h3>
                     <p class="text-cyan-500 font-medium mb-3 mono">Researcher</p>
@@ -896,8 +1193,8 @@
                 </div>
                 
                 <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
-                    <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <img src="/src/ashen.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Sepala S. N.</h3>
                     <p class="text-orange-500 font-medium mb-3 mono">Researcher</p>
@@ -912,8 +1209,8 @@
             <div class="mt-12 flex flex-col md:flex-row justify-center gap-32">                
                 <!-- Supervisors -->
                 <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
-                    <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <img src="/src/sup_nelum.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Mr. Nelum Amarasena</h3>
                     <p class="text-yellow-500 font-medium mb-3 mono">Project Supervisor</p>
@@ -925,8 +1222,8 @@
                 </div>
                 
                 <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
-                    <div class="w-24 h-24 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
+                        <img src="/src/scan_image_1505795881-Mr__Anuradha.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Prof. Anuradha Jayakody</h3>
                     <p class="text-teal-500 font-medium mb-3 mono">Co-Supervisor</p>
@@ -939,7 +1236,6 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Us Section -->
     <section id="contact" class="py-20 bg-gray-100 relative overflow-hidden">
         <div class="absolute inset-0 tech-pattern opacity-20"></div>
@@ -1009,37 +1305,72 @@
                 
                 <!-- Contact Form -->
                 <div class="glassmorphism-card p-8 rounded-lg border-gradient">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6 glow-text">Send us a Message</h3>
-                    
-                    <form class="space-y-6" id="contactForm">
-                        <div class="relative">
-                            <input type="text" id="name" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Your Name" required>
-                            <label for="name" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Name</label>
-                        </div>
-                        
-                        <div class="relative">
-                            <input type="email" id="email" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Your Email" required>
-                            <label for="email" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Email</label>
-                        </div>
-                        
-                        <div class="relative">
-                            <input type="text" id="subject" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Subject" required>
-                            <label for="subject" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Subject</label>
-                        </div>
-                        
-                        <div class="relative">
-                            <textarea id="message" rows="5" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent resize-none" placeholder="Your Message" required></textarea>
-                            <label for="message" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Message</label>
-                        </div>
-                        
-                        <button type="submit" class="w-full gradient-bg text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transform hover:scale-105 transition-all duration-200 focus:ring-2 focus:ring-blue-500/20 neon-glow">
-                            <span class="flex items-center justify-center">
-                                <i class="fas fa-paper-plane mr-2"></i>
-                                <span id="buttonText">Send Message</span>
-                            </span>
-                        </button>
-                    </form>
-                </div>
+    <h3 class="text-2xl font-semibold text-gray-900 mb-6 glow-text">Send us a Message</h3>
+    
+    <form class="space-y-6" id="contactForm" action="https://formspree.io/f/mqaqvvdd" method="POST">
+        <div class="relative">
+            <input type="text" id="name" name="name" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Your Name" required>
+            <label for="name" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Name</label>
+        </div>
+        
+        <div class="relative">
+            <input type="email" id="email" name="email" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Your Email" required>
+            <label for="email" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Email</label>
+        </div>
+        
+        <div class="relative">
+            <input type="text" id="subject" name="subject" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent" placeholder="Subject" required>
+            <label for="subject" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Subject</label>
+        </div>
+        
+        <div class="relative">
+            <textarea id="message" name="message" rows="5" class="peer w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 placeholder-transparent resize-none" placeholder="Your Message" required></textarea>
+            <label for="message" class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-blue-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">Your Message</label>
+        </div>
+        
+        <!-- Hidden input for redirect URL -->
+        <input type="hidden" name="_next" value="/thank-you.html">
+        
+        <button type="submit" class="w-full gradient-bg text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transform hover:scale-105 transition-all duration-200 focus:ring-2 focus:ring-blue-500/20 neon-glow">
+            <span class="flex items-center justify-center">
+                <i class="fas fa-paper-plane mr-2"></i>
+                <span id="buttonText">Send Message</span>
+            </span>
+        </button>
+    </form>
+    
+    <!-- Include Formspree JavaScript for AJAX submission -->
+    <script src="https://formspree.io/js/formspree.js" async></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const buttonText = document.getElementById('buttonText');
+            
+            try {
+                buttonText.textContent = 'Sending...';
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    buttonText.textContent = 'Sent!';
+                    form.reset();
+                    // Redirect to thank-you page after a brief delay
+                    setTimeout(() => { window.location.href = form.querySelector('input[name="_next"]').value; }, 1000);
+                } else {
+                    buttonText.textContent = 'Error';
+                    alert('There was an error submitting the form. Please try again.');
+                }
+            } catch (error) {
+                buttonText.textContent = 'Error';
+                alert('There was an error submitting the form. Please try again.');
+            }
+        });
+    </script>
+</div>
             </div>
         </div>
     </section>
