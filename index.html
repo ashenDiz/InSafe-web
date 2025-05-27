@@ -695,124 +695,145 @@
             </div>
 
             <!-- Technologies Used -->
-            <div id="technologies" class="mb-5 pt-20">
-                <div class="glassmorphism-card rounded-3xl p-12 border-gradient">                   
-                    <div class="text-center mb-12">
-                        <div class="inline-flex items-center justify-center w-14 h-14 bg-gray-500/20 border border-gray-500/30 rounded-full mb-4 icon-container">
-                            <i class="fas fa-microchip text-gray-400 text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Technologies Used</h3>
+           <div id="technologies" class="mb-5 pt-20">
+    <div class="glassmorphism-card rounded-3xl p-12 border-gradient">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full mb-4 shadow-lg transform hover:rotate-12 transition-transform duration-300">
+                <i class="fas fa-microchip text-white text-2xl"></i>
+            </div>
+            <h3 class="text-3xl font-bold gradient-text glow-text">Technologies Used</h3>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-12 text-center font-medium">
+                A cutting-edge tech stack powers our intelligent safety system, enabling real-time detection and predictive analytics for industrial safety.
+            </p>
+
+            <!-- Technology Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-14">
+                <!-- Python -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-cyan-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" class="w-full h-full object-contain">
                     </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">Python</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Core Backend Language</p>
+                </div>
 
-                    <div class="max-w-6xl mx-auto">
-                        <p class="text-lg text-gray-300 mb-12 text-center">
-                            Our project utilizes a robust and modern tech stack to build an intelligent, scalable, and efficient system.
-                        </p>
-
-                        <!-- Technology Grid -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-14">
-                            <!-- Python -->
-                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">Python</h4>
-                                <p class="text-xs methodology-text-gray">Core Backend Language</p>
-                            </div>
-
-                            <!-- LangChain -->
-                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://images.seeklogo.com/logo-png/61/3/langchain-icon-logo-png_seeklogo-611655.png">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">LangChain</h4>
-                                <p class="text-xs methodology-text-gray">LLM Framework</p>
-                            </div>
-
-                            <!-- ChromaDB -->
-                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://miro.medium.com/v2/resize:fit:793/1*2crwn9fsu58hVQua-dEa3w.png" alt="ChromaDB Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">Chroma DB</h4>
-                                <p class="text-xs methodology-text-gray">Vector Database</p>
-                            </div>
-
-                            <!-- Docker -->
-                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" alt="Docker Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">Docker</h4>
-                                <p class="text-xs methodology-text-gray">Containerization</p>
-                            </div>
-
-                            <!-- Azure -->
-                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" alt="Azure Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">Azure</h4>
-                                <p class="text-xs methodology-text-gray">Cloud Infrastructure</p>
-                            </div>
-
-                            <!-- GitHub -->
-                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png" alt="GitHub Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">GitHub</h4>
-                                <p class="text-xs methodology-text-gray">Version Control</p>
-                            </div>
-
-                            <!-- Google Colab -->
-                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg" alt="Colab Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">Google Colab</h4>
-                                <p class="text-xs methodology-text-gray">Cloud Notebook</p>
-                            </div>
-
-                            <!-- Jupyter Notebook -->
-                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">Jupyter Notebook</h4>
-                                <p class="text-xs methodology-text-gray">Experimentation Interface</p>
-                            </div>
-
-                            <!-- React.js -->
-                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">React.js</h4>
-                                <p class="text-xs methodology-text-gray">Frontend Library</p>
-                            </div>
-
-                            <!-- Node.js -->
-                            <div class="bg-gray-800/50 border border-cyan-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">Node.js</h4>
-                                <p class="text-xs methodology-text-gray">Runtime Environment</p>
-                            </div>
-
-                            <!-- SQLite3 -->
-                            <div class="bg-gray-800/50 border border-purple-500/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center methodology-subcard">
-                                <div class="w-20 h-20 mx-auto mb-4">
-                                    <img src="https://images.icon-icons.com/2699/PNG/512/sqlite_logo_icon_169724.png" alt="SQLite Logo" class="w-16 h-16 object-contain">
-                                </div>
-                                <h4 class="font-bold methodology-text-primary mb-2">SQLite3</h4>
-                                <p class="text-xs methodology-text-gray">Lightweight Database</p>
-                            </div>
-                        </div>
+                <!-- MongoDB -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-purple-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="src/mongodb-logo-png_seeklogo-481256.png" alt="MongoDB Logo" class="w-full h-full object-contain">
                     </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">MongoDB</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">NoSQL Database</p>
+                </div>
+
+                <!-- scikit-learn -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-cyan-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit-learn Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">scikit-learn</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Machine Learning Library</p>
+                </div>
+
+                <!-- Grid Search -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-purple-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" alt="Grid Search Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">Grid Search</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Hyperparameter Tuning</p>
+                </div>
+
+                <!-- XAMPP -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-cyan-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="src/xamp.png" alt="XAMPP Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">XAMPP</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Local Dev Environment</p>
+                </div>
+
+                <!-- Node-RED -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-purple-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="src/nodered.png" alt="Node-RED Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">Node-RED</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">IoT Workflow Integration</p>
+                </div>
+
+                <!-- Arduino IDE -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-cyan-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="src/7577999.webp" alt="Arduino IDE Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">Arduino IDE</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Microcontroller Programming</p>
+                </div>
+
+                <!-- YOLO -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-purple-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="src/yolov8.svg" alt="YOLO Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">YOLO</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Object Detection Framework</p>
+                </div>
+
+                <!-- C/C++ -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-cyan-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C/C++ Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">C/C++</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Embedded Systems</p>
+                </div>
+
+                <!-- React.js -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-purple-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">React.js</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Frontend Library</p>
+                </div>
+
+                <!-- Node.js -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-cyan-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">Node.js</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Runtime Environment</p>
+                </div>
+
+                <!-- Jupyter Notebook -->
+                <div class="relative group methodology-subcard bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-purple-500/30 rounded-2xl p-5 shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative w-14 h-14 mx-auto mb-4 animate-fade-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-1 text-sm">Jupyter Notebook</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Experimentation Interface</p>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
         </div>
     </section>
 
@@ -931,7 +952,7 @@
             <div class="grid md:grid-cols-2 gap-6 text-sm">
                 <div class="methodology-subcard p-5 rounded-xl border methodology-accent-green">
                     <h4 class="methodology-text-green font-bold mb-1">Predictive Accuracy</h4>
-                    <p class="methodology-text-gray">SARIMA forecasts achieved 87% accuracy in machinery failure predictions. Fire detection reached 92% precision under test conditions.</p>
+                    <p class="methodology-text-gray">Gaussian Naive Bayes (GaussianNB) was selected as the final model. It demonstrated a good balance between training and testing performance, making it a suitable choice for deployment.</p>
                 </div>
                 <div class="methodology-subcard p-5 rounded-xl border methodology-accent-yellow">
                     <h4 class="methodology-text-yellow font-bold mb-1">System Responsiveness</h4>
@@ -941,7 +962,7 @@
         </div>
 
         <!-- 5. Future Directions -->
-        <div class="mb-12">
+        <!-- <div class="mb-12">
             <h3 class="text-xl font-semibold methodology-subheading mb-4">🚀 Future Enhancements</h3>
             <div class="grid md:grid-cols-2 gap-6 text-sm">
                 <div class="methodology-subcard p-5 rounded-xl border methodology-accent-purple">
@@ -961,7 +982,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <!-- Milestones Section -->
@@ -1070,33 +1091,33 @@
         <div class="mb-16">
             <h3 class="text-2xl font-semibold mb-6 border-b methodology-accent-purple pb-2 methodology-subheading">Documents</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                <a href="https://drive.google.com/file/d/1co5Di5-zniazbxxHS5WWD5dGfNEkGUGR/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-purple transition card-hover">
+                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-purple transition card-hover">
                     <span class="block font-medium methodology-text-purple">Topic Assessment (Group)</span>
-                </a>
+                </a> -->
                 <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-blue transition card-hover">
                     <span class="block font-medium methodology-text-blue">Project Charter (Group)</span>
                 </a>
                 <a href="https://drive.google.com/drive/folders/1_RM6CFxDaY08CCecwvdYygLqaVMshNcT?usp=sharing" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-green transition card-hover">
                     <span class="block font-medium methodology-text-green">Project Proposal (Individual)</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-yellow transition card-hover">
+                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-yellow transition card-hover">
                     <span class="block font-medium methodology-text-yellow">Status Documents 1 (Individual)</span>
                 </a>
                 <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 methodology-accent-yellow transition card-hover">
                     <span class="block font-medium methodology-text-yellow">Status Documents 2 (Individual)</span>
-                </a>
+                </a> -->
                 <a href="https://drive.google.com/file/d/1IR-PWhTauKAbD_yZzC5o8pKMs_uKqQS3/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-red-500 transition card-hover">
                     <span class="block font-medium text-red-400 methodology-text-primary">Research Paper (Group)</span>
                 </a>
-                <a href="" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-pink-500 transition card-hover">
+                <a href="https://drive.google.com/file/d/1emS68SlE39jiAf5zzTPQd2IsiBC1Pbni/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-pink-500 transition card-hover">
                     <span class="block font-medium text-pink-400 methodology-text-primary">Final Report (Group)</span>
                 </a>
                 <a href="https://drive.google.com/drive/folders/1wCqm1rpU5jlAKFaPj9bp3MNN50vcg9id?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-pink-500 transition card-hover">
                     <span class="block font-medium text-pink-400 methodology-text-primary">Final Report (Individual)</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-indigo-500 transition card-hover">
+                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-indigo-500 transition card-hover">
                     <span class="block font-medium text-indigo-400 methodology-text-primary">Poster (Group) - Coming Soon</span>
-                </a>
+                </a> -->
             </div>
         </div>
 
@@ -1113,8 +1134,8 @@
                 <a href="https://drive.google.com/file/d/1mPJ5OlPoF5WaUp51h1x6kYHo-v8YA_IC/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-400 transition card-hover">
                     <span class="block font-medium text-orange-300 methodology-text-primary">Progress Presentation 2</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-300 transition card-hover">
-                    <span class="block font-medium text-orange-200 methodology-text-primary">Final Presentation - Coming Soon</span>
+                <a href="https://docs.google.com/presentation/d/1Vq3zG0mcHLIS4uaX8TzzN4SH3Hoa0Rzu/edit?usp=sharing&ouid=109723399893832217940&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-300 transition card-hover">
+                    <span class="block font-medium text-orange-200 methodology-text-primary">Final Presentation</span>
                 </a>
             </div>
         </div>
@@ -1123,7 +1144,7 @@
         <div class="mb-8">
             <h3 class="text-2xl font-semibold mb-6 border-b border-green-600 pb-2 methodology-subheading">Resources</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-green-400 transition card-hover">
+                <a href="https://github.com/ashenDiz/motor-dashboard.git" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-green-400 transition card-hover">
                     <span class="block font-medium text-green-300 methodology-text-primary">Source Code</span>
                 </a>
                 <a href="https://drive.google.com/drive/folders/1-6dSEBOdgeNbQUzAXjTJPz9d0V82Oyoa?usp=sharing" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-blue-400 transition card-hover">
@@ -1132,9 +1153,9 @@
                 <a href="https://drive.google.com/drive/folders/13SL3W01zx1X4zCE83aCP-ARZD3QETDy0?usp=drive_link" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-yellow-400 transition card-hover">
                     <span class="block font-medium text-yellow-300 methodology-text-primary">Demo</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-400 transition card-hover">
+                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="glassmorphism-card p-5 rounded-xl shadow-lg border-t-4 border-orange-400 transition card-hover">
                     <span class="block font-medium text-orange-300 methodology-text-primary">Development Walkthroughs</span>
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
@@ -1147,7 +1168,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold gradient-text mb-4 glow-text">Our Team</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Meet the researchers behind this innovative educational AI project
+                    Meet the researchers behind this innovative Safety System Project
                 </p>
             </div>
             
@@ -1181,7 +1202,7 @@
                 
                 <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
                     <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <img src="src/ashen.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
+                        <img src="src/isara.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Samanayaka P.V.I.R.</h3>
                     <p class="text-cyan-500 font-medium mb-3 mono">Researcher</p>
@@ -1194,7 +1215,7 @@
                 
                 <div class="glassmorphism-card p-8 rounded-lg card-hover text-center border-gradient group">
                     <div class="w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center neon-glow group-hover:scale-110 transition-transform duration-300">
-                        <img src="src/ashen.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
+                        <img src="src/sepala.jpg" alt="Dissanayake A.L. Profile" class="w-full h-full object-cover rounded-full border-2 border-white shadow-lg">
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2 glow-text">Sepala S. N.</h3>
                     <p class="text-orange-500 font-medium mb-3 mono">Researcher</p>
@@ -1287,7 +1308,7 @@
                     </div>
                     
                     <!-- Social Links -->
-                    <div class="gradient-bg p-8 rounded-lg text-white neon-glow">
+                    <!-- <div class="gradient-bg p-8 rounded-lg text-white neon-glow">
                         <h3 class="text-xl font-semibold mb-4 glow-text">Follow Our Research</h3>
                         <div class="flex space-x-4">
                             <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-opacity-30 transition-all duration-200 transform hover:scale-110">
@@ -1300,7 +1321,7 @@
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <!-- Contact Form -->
